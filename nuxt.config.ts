@@ -19,6 +19,9 @@ export default defineNuxtConfig({
             database_id: 'dcdd7345-d340-4db0-9980-e936c5d74254',
           },
         ],
+        vars: {
+          NUXT_SITE_URL: 'https://banhmi-api.rest',
+        },
       },
     },
   },
