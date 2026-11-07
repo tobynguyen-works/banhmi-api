@@ -1,7 +1,7 @@
 import type { Shop } from '#server/schema/shop'
 import { joinURL } from 'ufo'
 
-export default defineEventHandler(async (event): Promise<Shop[]> => {
+export default defineCachedEventHandler(async (event): Promise<Shop[]> => {
   const { siteUrl } = useRuntimeConfig()
 
   const shops = await queryCollection(event, 'shops')
@@ -16,4 +16,7 @@ export default defineEventHandler(async (event): Promise<Shop[]> => {
       name: joinURL(siteUrl, photo.name),
     })),
   }))
+}, {
+  swr: true,
+  maxAge: 60 * 60 * 24,
 })

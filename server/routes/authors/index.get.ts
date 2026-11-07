@@ -1,7 +1,7 @@
 import type { Author } from '#server/schema/author'
 import { createError } from 'evlog'
 
-export default defineEventHandler(async (event): Promise<Author[]> => {
+export default defineCachedEventHandler(async (event): Promise<Author[]> => {
   const log = useLogger(event)
 
   let authors
@@ -37,4 +37,7 @@ export default defineEventHandler(async (event): Promise<Author[]> => {
   })
 
   return result
+}, {
+  swr: true,
+  maxAge: 60 * 60 * 24,
 })

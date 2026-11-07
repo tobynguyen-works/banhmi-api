@@ -3,7 +3,7 @@ import { createError } from 'evlog'
 import { joinURL } from 'ufo'
 import { shopSchema } from '#server/schema/shop'
 
-export default defineEventHandler(async (event): Promise<Shop> => {
+export default defineCachedEventHandler(async (event): Promise<Shop> => {
   const log = useLogger(event)
   const { siteUrl } = useRuntimeConfig()
 
@@ -61,4 +61,4 @@ export default defineEventHandler(async (event): Promise<Shop> => {
   })
 
   return result
-})
+}, { swr: true, maxAge: 60 * 60 * 24 })

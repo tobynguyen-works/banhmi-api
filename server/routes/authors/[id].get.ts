@@ -2,7 +2,7 @@ import type { Author } from '#server/schema/author'
 import { createError } from 'evlog'
 import { authorSchema } from '#server/schema/author'
 
-export default defineEventHandler(async (event): Promise<Author> => {
+export default defineCachedEventHandler(async (event): Promise<Author> => {
   const log = useLogger(event)
 
   const { id } = await getValidatedRouterParams(event, authorSchema.pick({ id: true }).parse)
@@ -50,4 +50,7 @@ export default defineEventHandler(async (event): Promise<Author> => {
   log.set({ author: result })
 
   return result
+}, {
+  swr: true,
+  maxAge: 60 * 60 * 24,
 })

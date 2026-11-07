@@ -6,6 +6,13 @@ export default defineNuxtConfig({
   // Build
   builder: 'vite',
   nitro: {
+    storage: {
+      cache: {
+        driver: 'cloudflare-kv-binding',
+        binding: 'KV',
+      },
+    },
+
     preset: 'cloudflare-module',
     cloudflare: {
       deployConfig: true,
@@ -17,6 +24,12 @@ export default defineNuxtConfig({
             binding: 'DB',
             database_name: 'banhmi-api',
             database_id: 'dcdd7345-d340-4db0-9980-e936c5d74254',
+          },
+        ],
+        kv_namespaces: [
+          {
+            binding: 'KV',
+            id: 'adf0da10bbd8457cb48486112673b991',
           },
         ],
         vars: {
