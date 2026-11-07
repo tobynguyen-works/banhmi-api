@@ -178,6 +178,9 @@ importers:
       nuxt:
         specifier: ^4.6.4
         version: 4.6.4(f6b4bfb5f9fe04a894867310dcabd85e)
+      nuxt-content-assets:
+        specifier: ^3.0.2
+        version: 3.0.2(@nuxt/content@3.16.2(@libsql/client@0.18.0)(@nuxt/schema@4.6.4)(@oxc-project/types@0.156.0)(better-sqlite3@13.0.3)(confbox@0.3.2)(dotenv@17.4.2)(esbuild@0.28.2)(giget@3.3.1)(magic-string@1.4.5)(magicast@0.5.5)(mlly@1.8.2)(oxc-parser@0.139.0)(rolldown@1.2.16)(rollup@4.67.5)(supports-color@10.2.2)(valibot@1.5.0(typescript@5.9.3))(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)))(@nuxt/schema@4.6.4)(confbox@0.3.2)(dotenv@17.4.2)(giget@3.3.1)(jiti@2.7.0)(magic-string@1.4.5)(magicast@0.5.5)(mlly@1.8.2)(nuxt@4.6.4(f6b4bfb5f9fe04a894867310dcabd85e))(oxc-parser@0.139.0)(rolldown@1.2.16)(unplugin@3.7.0(esbuild@0.28.2)(rolldown@1.2.16)(rollup@4.67.5)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)))
       ufo:
         specifier: ^1.6.4
         version: 1.6.4
@@ -1987,6 +1990,9 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
+  '@types/node@17.0.45':
+    resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
+
   '@types/node@26.6.6':
     resolution: {integrity: sha512-MzQj+8Kx3XI40OmUAE6Qoh58ZMNstNNMwn2nfd3qWsfe7nDNSqJNzes4njhz6AHwrSHOffSLwXU6yb474Q4aog==}
 
@@ -2749,6 +2755,10 @@ packages:
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
+
+  crosspath@2.0.0:
+    resolution: {integrity: sha512-ju88BYCQ2uvjO2bR+SsgLSTwTSctU+6Vp2ePbKPgSCZyy4MWZxYsT738DlKVRE5utUjobjPRm1MkTYKJxCmpTA==}
+    engines: {node: '>=14.9.0'}
 
   crossws@0.3.5:
     resolution: {integrity: sha512-ojKiDvcmByhwa8YYqbQI/hg7MEU0NC03+pSdEq4ZUnZR9xXpwk7E43SMNGkn+JxJGPFtNvQ48+vV2p+P1ml5PA==}
@@ -3841,6 +3851,11 @@ packages:
   image-meta@0.3.1:
     resolution: {integrity: sha512-rKANCbmsJCZ3/q87GTWZ+8MhOvhPLjsScznVtqvBoTu6Tyq8FzdPoBUMl/ZxQXy+/5I+C1vxXwS1jSwmHgmDLQ==}
 
+  image-size@2.1.0:
+    resolution: {integrity: sha512-6Dbisa46RsgeAh3TMSFL2i8+uIFG+/LRmz6Q2oscSJJvXo1sOw3EgNO4M8jPl1P+gR1atJLDPrpclX4IHz63sA==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   impound@1.2.1:
     resolution: {integrity: sha512-ja2MtFXrMxTlF6xvQMLMLb+Nt0JkD8xW9E1O7KxjFg5xUu1kgG3EUintwpW1zveoysYpMcnW+/nBpzkiO4mJ3w==}
 
@@ -4529,6 +4544,13 @@ packages:
   nuxt-component-meta@0.18.0:
     resolution: {integrity: sha512-Lo++ctinehNtQvU1SdYdIfYvhUqFtP5nOQsMvbrpFYh53TqwoS97BrS/tjWQe68cfXQaerzhKPFY1Xb1EH4mJg==}
     hasBin: true
+
+  nuxt-content-assets@3.0.2:
+    resolution: {integrity: sha512-A6zLwEX268q5qHUruUsderE0s8FdlV2U5GBsFkmcpSzZWixtfDLhCdJIYTn26XkpzxZcVp8BIPtJaX/364X6ow==}
+    engines: {node: '>=20.19.0'}
+    peerDependencies:
+      '@nuxt/content': ^3.0.0
+      nuxt: '>=3.13.0'
 
   nuxt@4.6.4:
     resolution: {integrity: sha512-nxeBPQp64cw6VmxFdrShRaMC7wln0UADaD7IB59o5LlP5rZqH8ZWbzONRralQksqj62UXowJSSaDGY+94XM+Gg==}
@@ -7907,6 +7929,8 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
+  '@types/node@17.0.45': {}
+
   '@types/node@26.6.6':
     dependencies:
       undici-types: 8.9.0
@@ -8674,6 +8698,10 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  crosspath@2.0.0:
+    dependencies:
+      '@types/node': 17.0.45
 
   crossws@0.3.5:
     dependencies:
@@ -9748,6 +9776,8 @@ snapshots:
 
   image-meta@0.3.1: {}
 
+  image-size@2.1.0: {}
+
   impound@1.2.1(esbuild@0.28.2)(rolldown@1.2.16)(rollup@4.67.5)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
@@ -10733,6 +10763,30 @@ snapshots:
       - dotenv
       - giget
       - rolldown
+
+  nuxt-content-assets@3.0.2(@nuxt/content@3.16.2(@libsql/client@0.18.0)(@nuxt/schema@4.6.4)(@oxc-project/types@0.156.0)(better-sqlite3@13.0.3)(confbox@0.3.2)(dotenv@17.4.2)(esbuild@0.28.2)(giget@3.3.1)(magic-string@1.4.5)(magicast@0.5.5)(mlly@1.8.2)(oxc-parser@0.139.0)(rolldown@1.2.16)(rollup@4.67.5)(supports-color@10.2.2)(valibot@1.5.0(typescript@5.9.3))(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)))(@nuxt/schema@4.6.4)(confbox@0.3.2)(dotenv@17.4.2)(giget@3.3.1)(jiti@2.7.0)(magic-string@1.4.5)(magicast@0.5.5)(mlly@1.8.2)(nuxt@4.6.4(f6b4bfb5f9fe04a894867310dcabd85e))(oxc-parser@0.139.0)(rolldown@1.2.16)(unplugin@3.7.0(esbuild@0.28.2)(rolldown@1.2.16)(rollup@4.67.5)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))):
+    dependencies:
+      '@nuxt/content': 3.16.2(@libsql/client@0.18.0)(@nuxt/schema@4.6.4)(@oxc-project/types@0.156.0)(better-sqlite3@13.0.3)(confbox@0.3.2)(dotenv@17.4.2)(esbuild@0.28.2)(giget@3.3.1)(magic-string@1.4.5)(magicast@0.5.5)(mlly@1.8.2)(oxc-parser@0.139.0)(rolldown@1.2.16)(rollup@4.67.5)(supports-color@10.2.2)(valibot@1.5.0(typescript@5.9.3))(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
+      '@nuxt/kit': 4.6.4(@nuxt/schema@4.6.4)(confbox@0.3.2)(dotenv@17.4.2)(giget@3.3.1)(jiti@2.7.0)(magic-string@1.4.5)(mlly@1.8.2)(oxc-parser@0.139.0)(rolldown@1.2.16)(unplugin@3.7.0(esbuild@0.28.2)(rolldown@1.2.16)(rollup@4.67.5)(vite@8.3.6(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1)))
+      c12: 3.3.4(magicast@0.5.5)
+      chokidar: 5.0.0
+      crosspath: 2.0.0
+      image-size: 2.1.0
+      micromatch: 4.0.8
+      nuxt: 4.6.4(f6b4bfb5f9fe04a894867310dcabd85e)
+      ohash: 2.0.12
+    transitivePeerDependencies:
+      - '@nuxt/schema'
+      - confbox
+      - dotenv
+      - giget
+      - jiti
+      - magic-string
+      - magicast
+      - mlly
+      - oxc-parser
+      - rolldown
+      - unplugin
 
   nuxt@4.6.4(f6b4bfb5f9fe04a894867310dcabd85e):
     dependencies:

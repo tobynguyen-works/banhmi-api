@@ -1,9 +1,13 @@
+import type { Shop } from '#server/schema/shop'
 import { createError } from 'evlog'
+import { joinURL } from 'ufo'
+import { shopSchema } from '#server/schema/shop'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event): Promise<Shop> => {
   const log = useLogger(event)
+  const { siteUrl } = useRuntimeConfig()
 
-  const id = getRouterParam(event, 'id')
+  const { id } = await getValidatedRouterParams(event, shopSchema.pick({ id: true }).parse)
 
   log.set({
     shop: { id },
@@ -12,8 +16,8 @@ export default defineEventHandler(async (event) => {
   let shop
   try {
     shop = await queryCollection(event, 'shops')
-      .select('name', 'stem', 'prefecture', 'photos')
-      .where('stem', '=', `shops/${id}`)
+      .select('name', 'prefecture', 'stem', 'photos')
+      .where('stem', '=', `shops/${id}/info`)
       .first()
   }
   catch (error) {
@@ -21,10 +25,7 @@ export default defineEventHandler(async (event) => {
       ? error
       : new Error(String(error))
 
-    log.set({
-      failure: { step: 'queryCollection', collection: 'shops' },
-    })
-    log.error(cause)
+    log.error(cause, { step: 'queryCollection', collection: 'shops' })
 
     throw createError({
       status: 500,
@@ -39,23 +40,24 @@ export default defineEventHandler(async (event) => {
     throw createError({
       status: 404,
       message: 'Shop not found',
-      why: 'Shop ID does not exist',
+      why: `No shop exists with id "${id}"`,
       fix: 'List valid shops at GET /shops and use one of the returned ids',
     })
   }
 
+  const { stem, photos, ...b } = shop
+
   const result = {
-    ...shop,
-    id: shop.stem.split('/').pop(),
+    ...b,
+    id: stem.split('/')[1]!,
+    photos: photos?.map(photo => ({
+      ...photo,
+      name: joinURL(siteUrl, photo.name),
+    })),
   }
 
   log.set({
-    shop: {
-      id: result.id,
-      name: result.name,
-      prefecture: result.prefecture,
-      photos: result.photos?.length ?? 0,
-    },
+    shop: { id: result.id, photos: result.photos?.length ?? 0 },
   })
 
   return result

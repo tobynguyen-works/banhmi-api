@@ -1,12 +1,13 @@
+import type { Author } from '#server/schema/author'
 import { createError } from 'evlog'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event): Promise<Author[]> => {
   const log = useLogger(event)
 
   let authors
   try {
     authors = await queryCollection(event, 'authors')
-      .select('id', 'name', 'url', 'stem')
+      .select('name', 'url', 'stem')
       .all()
   }
   catch (error) {
@@ -14,10 +15,7 @@ export default defineEventHandler(async (event) => {
       ? error
       : new Error(String(error))
 
-    log.set({
-      failure: { step: 'queryCollection', collection: 'authors' },
-    })
-    log.error(cause)
+    log.error(cause, { step: 'queryCollection', collection: 'authors' })
 
     throw createError({
       status: 500,
@@ -28,14 +26,11 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const result = authors.map(({ stem, ...author }) => {
-    const id = stem.split('/').pop()
-
-    return {
-      ...author,
-      id,
-    }
-  })
+  const result = authors.map(({ name, url, stem }) => ({
+    name,
+    url,
+    id: stem.slice(stem.lastIndexOf('/') + 1),
+  }))
 
   log.set({
     authors: { count: result.length },

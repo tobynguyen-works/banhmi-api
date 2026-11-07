@@ -44,8 +44,9 @@ export default defineNuxtConfig({
 
   // Modules
   modules: [
-    '@nuxt/eslint',
+    'nuxt-content-assets',
     '@nuxt/content',
+    '@nuxt/eslint',
     'evlog/nuxt',
   ],
   eslint: {
