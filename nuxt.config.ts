@@ -19,6 +19,9 @@ export default defineNuxtConfig({
       wrangler: {
         preview_urls: false,
         workers_dev: false,
+        observability: {
+          enabled: true,
+        },
         d1_databases: [
           {
             binding: 'DB',
