@@ -26,6 +26,10 @@ export default defineNuxtConfig({
             invocation_logs: true,
             head_sampling_rate: 1,
           },
+          traces: {
+            enabled: true,
+            head_sampling_rate: 1,
+          },
         },
         d1_databases: [
           {
